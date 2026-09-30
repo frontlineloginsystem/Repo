@@ -308,3 +308,31 @@ body::after{transform:translate3d(0,calc(var(--watermark-shift,0) * -0.65),0) ro
   .about::before,.portfolio::before,.trust::before{right:-300px}
 }
 @media(prefers-reduced-motion:reduce){.section::before,.section::after{transform:none!important}}
+
+/* Visible enterprise watermark layer — visual only */
+.section{position:relative;isolation:isolate;overflow:hidden}
+.section::before{z-index:0!important;opacity:.075!important;filter:grayscale(.35) saturate(.55) contrast(1.02)!important;mix-blend-mode:multiply;pointer-events:none!important}
+.section::after{z-index:0!important;pointer-events:none!important}
+.section > *{position:relative;z-index:1}
+
+/* Give the technology imagery enough presence to be seen while remaining a watermark. */
+.about::before,.services::before,.portfolio::before,.industries::before,.trust::before,.ecosystem::before{opacity:.075!important}
+.about::after,.services::after,.portfolio::after,.industries::after,.trust::after,.ecosystem::after{opacity:.055!important}
+
+@media(max-width:850px){
+  .section::before{width:620px!important;height:620px!important;opacity:.065!important}
+  .about::before{right:-360px!important;top:4%!important}
+  .services::before{left:-360px!important;top:3%!important}
+  .portfolio::before{right:-360px!important;top:3%!important}
+  .industries::before{left:-360px!important;top:4%!important}
+  .trust::before{right:-360px!important;top:3%!important}
+  .ecosystem::before{left:50%!important;top:2%!important}
+}
+@media(max-width:520px){
+  .section::before{width:540px!important;height:540px!important;opacity:.07!important}
+  .about::before{right:-285px!important}
+  .services::before{left:-285px!important}
+  .portfolio::before{right:-285px!important}
+  .industries::before{left:-285px!important}
+  .trust::before{right:-285px!important}
+}
