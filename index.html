@@ -8,11 +8,21 @@
   <title>Frontline Login System Private Limited | Technology Solutions</title>
   <link rel="icon" href="assets/logo.png">
   <link rel="stylesheet" href="styles.css">
+  <style>
+    :root{color-scheme:light !important;--bg:#ffffff !important;--surface:#f7f8fa !important;--surface2:#eef1f4 !important;--text:#17191c !important;--muted:#5f6872 !important;--line:#dfe3e7 !important}
+    html,body{background:#fff !important;color:#17191c !important;color-scheme:light !important}
+    .site-header{background:#fff !important;border-bottom-color:#dfe3e7 !important}
+    .service-card{background:#fff !important;color:#17191c !important}
+    .service-card:hover{background:#f7f8fa !important}
+    .modal{display:none;position:fixed !important}
+    .modal.open{display:flex !important}
+    @media(prefers-color-scheme:dark){html,body{background:#fff !important;color:#17191c !important}.site-header{background:#fff !important}}
+  </style>
 </head>
 <body>
   <header class="site-header">
     <a class="brand" href="#home" aria-label="Frontline Login System home">
-      <img src="assets/logo-header.png" alt="Frontline Login System Private Limited" class="brand-logo">
+      <img src="assets/logo-header-transparent.png" alt="Frontline Login System Private Limited" class="brand-logo">
     </a>
     <button class="menu-toggle" aria-label="Open menu" aria-expanded="false">☰</button>
     <nav class="nav">
@@ -45,7 +55,7 @@
         <div class="orbit">
           <div class="orbit-ring ring-one"></div>
           <div class="orbit-ring ring-two"></div>
-          <div class="orbit-core"><img src="assets/logo-symbol.png" alt="Frontline logo"></div>
+          <div class="orbit-core"><img src="assets/logo-symbol-transparent.png" alt="Frontline logo"></div>
           <span class="node n1">CLOUD</span>
           <span class="node n2">DATA</span>
           <span class="node n3">SECURITY</span>
@@ -99,7 +109,7 @@
       </div>
 
   <!-- Service enquiry popup -->
-  <div class="modal" id="service-modal" role="dialog" aria-modal="true" aria-labelledby="service-modal-title" aria-hidden="true">
+  <div class="modal" id="service-modal" style="display:none" role="dialog" aria-modal="true" aria-labelledby="service-modal-title" aria-hidden="true">
     <div class="modal-panel">
       <div class="modal-header">
         <div>

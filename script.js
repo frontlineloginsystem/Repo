@@ -11,8 +11,8 @@ linkedinLink.href='https://www.linkedin.com/company/frontline-login-system/';
 const modal=document.getElementById('service-modal');
 const serviceForm=document.getElementById('service-form');
 const serviceChoice=document.getElementById('service-choice');
-const closeModal=()=>{modal.classList.remove('open');modal.setAttribute('aria-hidden','true');document.body.style.overflow='';};
-const openModal=(service)=>{modal.classList.add('open');modal.setAttribute('aria-hidden','false');document.body.style.overflow='hidden';if(service)serviceChoice.value=service;setTimeout(()=>document.getElementById('customer-name')?.focus(),50);};
+const closeModal=()=>{if(!modal)return;modal.classList.remove('open');modal.style.display='none';modal.setAttribute('aria-hidden','true');document.body.style.overflow='';};
+const openModal=(service)=>{if(!modal)return;modal.classList.add('open');modal.style.display='flex';modal.setAttribute('aria-hidden','false');document.body.style.overflow='hidden';if(service)serviceChoice.value=service;setTimeout(()=>document.getElementById('customer-name')?.focus(),50);};
 
 document.querySelectorAll('.service-card').forEach(card=>{
   const service=card.querySelector('h3')?.textContent.trim()||'';
