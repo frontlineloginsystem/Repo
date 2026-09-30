@@ -336,3 +336,58 @@ body::after{transform:translate3d(0,calc(var(--watermark-shift,0) * -0.65),0) ro
   .industries::before{left:-285px!important}
   .trust::before{right:-285px!important}
 }
+
+/* ============================================================
+   REAL ASSET WATERMARK LAYER
+   Visual-only enhancement. Existing content and functionality stay intact.
+   ============================================================ */
+.section{position:relative;isolation:isolate;overflow:hidden}
+.section::before{
+  content:"";
+  position:absolute;
+  inset:0;
+  z-index:0;
+  pointer-events:none;
+  background-image:url('assets/watermark-tech-infrastructure.png');
+  background-repeat:no-repeat;
+  background-size:min(1180px,92vw) auto;
+  background-position:right 18% center;
+  opacity:.105;
+  mix-blend-mode:multiply;
+  transform:translate3d(0,var(--watermark-shift,0px),0);
+  will-change:transform;
+}
+.section:nth-of-type(even)::before{
+  background-position:left 14% center;
+  transform:translate3d(0,calc(var(--watermark-shift,0px) * -.72),0);
+}
+.section > *{position:relative;z-index:1}
+
+/* Keep the visual away from the most important reading areas while scrolling. */
+.about::before{background-position:right 8% center}
+.services::before{background-position:left 22% center}
+.portfolio::before,.project-visuals::before{background-position:right 15% center}
+.industries::before{background-position:left 16% center}
+.trust::before{background-position:right 28% center}
+.ecosystem::before{background-position:center 20% center}
+.technology::before{background-position:left 18% center}
+.approach::before{background-position:right 24% center}
+.careers::before{background-position:left 18% center}
+.contact::before{background-position:right 10% center}
+
+/* Slightly stronger on desktop; still intentionally translucent. */
+@media(min-width:851px){
+  .section::before{opacity:.12;background-size:min(1250px,82vw) auto}
+}
+@media(max-width:850px){
+  .section::before{
+    background-size:760px auto;
+    opacity:.085;
+    background-position:right 14% center;
+  }
+  .section:nth-of-type(even)::before{background-position:left 12% center}
+}
+@media(max-width:520px){
+  .section::before{background-size:700px auto;opacity:.075}
+}
+@media(prefers-reduced-motion:reduce){.section::before{transform:none!important}}
