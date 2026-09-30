@@ -280,3 +280,31 @@ body::after{width:760px;height:760px;right:-300px;top:55vh;background-image:url(
 @media(prefers-reduced-motion:reduce){body::before,body::after,.about::after,.services::after,.project-visuals::after,.ecosystem::after,.technology::after{animation:none!important}}
 body::before{transform:translate3d(0,var(--watermark-shift,0),0) rotate(-8deg)}
 body::after{transform:translate3d(0,calc(var(--watermark-shift,0) * -0.65),0) rotate(7deg)}
+
+/* Subtle section watermark system — purely visual, no content or functionality changes. */
+.section{position:relative;overflow:hidden;isolation:isolate}
+.section::before{content:"";position:absolute;z-index:-1;pointer-events:none;width:min(720px,72vw);height:min(720px,72vw);background-repeat:no-repeat;background-size:contain;background-position:center;opacity:.035;filter:grayscale(1) saturate(.2) contrast(1.08);transform:translate3d(0,var(--watermark-shift,0px),0);transition:opacity .8s ease;will-change:transform}
+.section::after{content:"";position:absolute;z-index:-1;pointer-events:none;width:420px;height:420px;border-radius:50%;filter:blur(60px);opacity:.045;transform:translate3d(0,var(--watermark-shift,0px),0);will-change:transform}
+.about::before{right:-210px;top:8%;background-image:url('assets/ai-enterprise-vision.png');transform:translate3d(0,var(--watermark-shift,0px),0) rotate(7deg)}
+.about::after{right:-110px;top:28%;background:radial-gradient(circle,rgba(38,151,255,.42),transparent 68%)}
+.services::before{left:-230px;top:5%;background-image:url('assets/ai-tech-hub.png');transform:translate3d(0,var(--watermark-shift,0px),0) rotate(-8deg)}
+.services::after{left:-100px;top:34%;background:radial-gradient(circle,rgba(226,27,35,.28),transparent 68%)}
+.portfolio::before{right:-220px;top:4%;background-image:url('assets/ai-corporate-roadmap.png');transform:translate3d(0,var(--watermark-shift,0px),0) rotate(6deg)}
+.portfolio::after{right:-90px;top:42%;background:radial-gradient(circle,rgba(139,92,246,.25),transparent 68%)}
+.industries::before{left:-230px;top:7%;background-image:url('assets/ai-enterprise-vision.png');transform:translate3d(0,var(--watermark-shift,0px),0) rotate(-5deg)}
+.industries::after{left:-100px;top:38%;background:radial-gradient(circle,rgba(14,165,164,.24),transparent 68%)}
+.trust::before{right:-210px;top:3%;background-image:url('assets/ai-tech-hub.png');transform:translate3d(0,var(--watermark-shift,0px),0) rotate(9deg)}
+.trust::after{right:-90px;top:45%;background:radial-gradient(circle,rgba(22,135,217,.22),transparent 68%)}
+.ecosystem::before{left:50%;top:3%;background-image:url('assets/ai-corporate-roadmap.png');transform:translate3d(-50%,var(--watermark-shift,0px),0);opacity:.025}
+.section>.section-label,.section>.section-heading,.section>.section-content,.section>.service-grid,.section>.portfolio-grid,.section>.industries-layout,.section>.trust-grid,.section>.ecosystem-box{position:relative;z-index:1}
+
+/* Extra enterprise background details: faint circuit lines and data nodes. */
+.services .section-heading::after,.portfolio .section-heading::after,.trust .section-heading::after{content:"";position:absolute;right:0;top:-20px;width:210px;height:100px;opacity:.13;background-image:radial-gradient(circle at 8px 8px,#e21b23 1.5px,transparent 2px),linear-gradient(90deg,transparent 49.5%,#aab3bc 50%,transparent 50.5%),linear-gradient(0deg,transparent 49.5%,#aab3bc 50%,transparent 50.5%);background-size:42px 42px,42px 42px,42px 42px;mask-image:linear-gradient(90deg,transparent,#000)}
+
+@media(max-width:800px){
+  .section::before{width:560px;height:560px;opacity:.028}
+  .section::after{width:300px;height:300px;opacity:.035}
+  .services::before,.industries::before{left:-300px}
+  .about::before,.portfolio::before,.trust::before{right:-300px}
+}
+@media(prefers-reduced-motion:reduce){.section::before,.section::after{transform:none!important}}
