@@ -252,3 +252,31 @@ footer{
 @media(max-width:520px){.visual-hero-strip{height:220px}.visual-hero-overlay strong{font-size:25px}.visual-project-image{height:170px}.technology-map-head{display:block}.architecture-pulse{margin-top:25px}.arch-layer strong{font-size:15px}.arch-layer span{font-size:11px}}
 .visual-project-card,.arch-layer,.visual-hero-strip{opacity:0;transform:translateY(18px)}.visual-project-card.is-visible,.arch-layer.is-visible,.visual-hero-strip.is-visible{opacity:1;transform:none}.visual-hero-strip.is-visible{transform:none}
 @media(prefers-reduced-motion:reduce){.visual-project-card,.arch-layer,.visual-hero-strip{opacity:1!important;transform:none!important}.visual-hero-image,.architecture-pulse:before,.architecture-pulse:after,.architecture-pulse i{animation:none!important}}
+
+/* Ambient visual layer — additive only */
+body{position:relative;overflow-x:hidden}
+body::before,body::after{content:"";position:fixed;z-index:-2;pointer-events:none;background-repeat:no-repeat;background-size:700px auto;opacity:.045;filter:grayscale(1) contrast(1.1);will-change:transform}
+body::before{width:700px;height:700px;left:-260px;top:13vh;background-image:url('assets/ai-tech-hub.png');transform:rotate(-8deg)}
+body::after{width:760px;height:760px;right:-300px;top:55vh;background-image:url('assets/ai-enterprise-vision.png');transform:rotate(7deg)}
+.section{position:relative;isolation:isolate}
+.section:not(.technology-map)::before{content:"";position:absolute;inset:0;z-index:-1;pointer-events:none;background-image:radial-gradient(circle at 8% 18%,rgba(226,27,35,.055),transparent 20%),radial-gradient(circle at 92% 82%,rgba(31,141,214,.045),transparent 22%)}
+.about::after,.services::after,.project-visuals::after,.ecosystem::after,.technology::after,.approach::after,.careers::after{content:"";position:absolute;z-index:-1;pointer-events:none;width:360px;height:360px;right:-180px;top:12%;background:url('assets/ai-tech-hub.png') center/cover no-repeat;opacity:.035;filter:grayscale(1);border-radius:50%;mask-image:radial-gradient(circle,black 20%,transparent 72%);animation:watermarkFloat 16s ease-in-out infinite alternate}
+.services::after,.technology::after{left:-190px;right:auto;top:35%;background-image:url('assets/ai-enterprise-vision.png');animation-delay:-6s}
+.project-visuals::after{right:-180px;top:8%;background-image:url('assets/ai-corporate-roadmap.png');animation-delay:-3s}
+@keyframes watermarkFloat{from{transform:translate3d(0,0,0) rotate(-5deg)}to{transform:translate3d(0,-24px,0) rotate(5deg)}}
+.ecosystem{overflow:hidden;background:linear-gradient(180deg,#fff,#f8fafc)}
+.ecosystem-box{position:relative;overflow:hidden}
+.ecosystem-box::after{content:"30+";position:absolute;right:-15px;bottom:-52px;font-family:'Space Grotesk';font-size:190px;font-weight:800;line-height:1;color:#eef1f4;letter-spacing:-.08em;pointer-events:none}
+.ecosystem-logos{position:relative;z-index:1;display:flex;flex-wrap:wrap;gap:9px;max-height:230px;overflow:hidden}
+.ecosystem-logos span{transition:transform .25s ease,border-color .25s ease,box-shadow .25s ease,background .25s ease}
+.ecosystem-logos span:hover{transform:translateY(-4px);border-color:#e21b23;box-shadow:0 8px 22px rgba(18,24,31,.08);background:#fff}
+.ecosystem-box .kicker::after{content:'  ·  30+ technologies represented';color:#8c969f;font-weight:500;letter-spacing:.05em}
+.tech-cloud{position:relative}
+.tech-cloud::before{content:"30+";position:absolute;right:0;top:-58px;font-family:'Space Grotesk';font-size:84px;font-weight:800;color:#f0f2f4;letter-spacing:-.08em;z-index:-1}
+.tech-cloud span{transition:transform .22s ease,border-color .22s ease,box-shadow .22s ease,background .22s ease}
+.tech-cloud span:hover{transform:translateY(-4px);border-color:#e21b23;background:#fff;box-shadow:0 10px 24px rgba(20,28,36,.08)}
+.technology{background:linear-gradient(90deg,#fff 0%,#fbfcfd 52%,#f5f8fb 100%)}
+@media(max-width:850px){body::before{left:-420px;opacity:.025}body::after{right:-430px;opacity:.025}.ecosystem-box::after{font-size:120px}.ecosystem-logos{max-height:none}.tech-cloud::before{font-size:60px;top:-42px}}
+@media(prefers-reduced-motion:reduce){body::before,body::after,.about::after,.services::after,.project-visuals::after,.ecosystem::after,.technology::after{animation:none!important}}
+body::before{transform:translate3d(0,var(--watermark-shift,0),0) rotate(-8deg)}
+body::after{transform:translate3d(0,calc(var(--watermark-shift,0) * -0.65),0) rotate(7deg)}

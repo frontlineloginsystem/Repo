@@ -54,3 +54,17 @@ if('IntersectionObserver' in window){
   },{threshold:.12});
   visualItems.forEach((el,i)=>{el.style.transitionDelay=`${Math.min(i*70,280)}ms`;visualObserver.observe(el);});
 }
+
+// Additive ambient watermark motion for a subtle enterprise-depth effect.
+if(!window.matchMedia('(prefers-reduced-motion: reduce)').matches){
+  let ticking=false;
+  window.addEventListener('scroll',()=>{
+    if(ticking)return;
+    ticking=true;
+    requestAnimationFrame(()=>{
+      const y=window.scrollY;
+      document.body.style.setProperty('--watermark-shift',`${Math.min(y*.018,34)}px`);
+      ticking=false;
+    });
+  },{passive:true});
+}
