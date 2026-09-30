@@ -8,10 +8,10 @@ Files:
 
 Important before launch:
 1. Put the official company logo at assets/logo.png.
-2. Company contact email: loginfrontline@gmail.com. No phone number is displayed.
+2. Confirm the current company phone, email and address with the client.
 3. Replace the legacy contact details in index.html after confirmation.
 4. Confirm the service list with the client.
-5. LinkedIn: https://www.linkedin.com/company/frontline-login-system/
+5. Add the final domain and LinkedIn URL.
 6. Add privacy policy / terms if contact forms or analytics are enabled.
 7. Create sitemap.xml and robots.txt before deployment.
 

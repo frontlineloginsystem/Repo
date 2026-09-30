@@ -4,6 +4,44 @@ toggle?.addEventListener('click',()=>{const open=nav.classList.toggle('open');to
 document.querySelectorAll('.nav a').forEach(a=>a.addEventListener('click',()=>nav.classList.remove('open')));
 document.getElementById('year').textContent=new Date().getFullYear();
 
-// Replace # with the final LinkedIn Company Page URL once confirmed.
 const linkedinLink=document.getElementById('linkedin-link');
 linkedinLink.href='https://www.linkedin.com/company/frontline-login-system/';
+
+// Click any service card to open the enquiry form with that service selected.
+const modal=document.getElementById('service-modal');
+const serviceForm=document.getElementById('service-form');
+const serviceChoice=document.getElementById('service-choice');
+const closeModal=()=>{modal.classList.remove('open');modal.setAttribute('aria-hidden','true');document.body.style.overflow='';};
+const openModal=(service)=>{modal.classList.add('open');modal.setAttribute('aria-hidden','false');document.body.style.overflow='hidden';if(service)serviceChoice.value=service;setTimeout(()=>document.getElementById('customer-name')?.focus(),50);};
+
+document.querySelectorAll('.service-card').forEach(card=>{
+  const service=card.querySelector('h3')?.textContent.trim()||'';
+  card.setAttribute('role','button');
+  card.setAttribute('tabindex','0');
+  card.setAttribute('aria-label',`Request expert advice or a quote for ${service}`);
+  card.addEventListener('click',()=>openModal(service));
+  card.addEventListener('keydown',e=>{if(e.key==='Enter'||e.key===' '){e.preventDefault();openModal(service);}});
+});
+
+document.getElementById('modal-close')?.addEventListener('click',closeModal);
+document.getElementById('modal-cancel')?.addEventListener('click',closeModal);
+modal?.addEventListener('click',e=>{if(e.target===modal)closeModal();});
+document.addEventListener('keydown',e=>{if(e.key==='Escape'&&modal?.classList.contains('open'))closeModal();});
+
+serviceForm?.addEventListener('submit',e=>{
+  e.preventDefault();
+  const data=new FormData(serviceForm);
+  const subject=`Frontline service enquiry - ${data.get('service')}`;
+  const body=[
+    `Name: ${data.get('name')}`,
+    `Email: ${data.get('email')}`,
+    `Company: ${data.get('company')||'Not provided'}`,
+    `Service: ${data.get('service')}`,
+    `Budget / range: ${data.get('budget')||'Not provided'}`,
+    `Expected timeline: ${data.get('timeline')||'Not provided'}`,
+    '',
+    'Requirement / question:',
+    data.get('requirement')
+  ].join('\n');
+  window.location.href=`mailto:loginfrontline@gmail.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+});
