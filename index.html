@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="description" content="Frontline Login System Private Limited — IT services, software solutions, cloud, cybersecurity, data analytics and technology consulting. Established in 2000.">
-  <meta name="theme-color" content="#0b0d10">
+  <meta name="theme-color" content="#ffffff">
   <title>Frontline Login System Private Limited | Technology Solutions</title>
   <link rel="icon" href="assets/logo.png">
   <link rel="stylesheet" href="styles.css">
@@ -156,6 +156,64 @@
     <div class="footer-brand">FRONTLINE <span>LOGIN SYSTEM PRIVATE LIMITED</span></div>
     <p>© <span id="year"></span> Frontline Login System Private Limited. All rights reserved.</p>
   </footer>
+
+  <!-- Service enquiry popup -->
+  <div class="modal" id="service-modal" role="dialog" aria-modal="true" aria-labelledby="service-modal-title" aria-hidden="true">
+    <div class="modal-panel">
+      <div class="modal-header">
+        <div>
+          <p class="kicker">SERVICE ENQUIRY</p>
+          <h2 id="service-modal-title">Request expert advice or a quote.</h2>
+        </div>
+        <button type="button" class="modal-close" id="modal-close" aria-label="Close">×</button>
+      </div>
+      <form class="service-form" id="service-form">
+        <div>
+          <label for="customer-name">Name *</label>
+          <input id="customer-name" name="name" required>
+        </div>
+        <div>
+          <label for="customer-email">Email *</label>
+          <input id="customer-email" name="email" type="email" required>
+        </div>
+        <div>
+          <label for="customer-company">Company</label>
+          <input id="customer-company" name="company">
+        </div>
+        <div>
+          <label for="service-choice">Service *</label>
+          <select id="service-choice" name="service" required>
+            <option value="">Select a service</option>
+            <option>Custom CRM</option>
+            <option>Cloud Migration</option>
+            <option>Cybersecurity</option>
+            <option>Data Analytics</option>
+            <option>IoT Solutions</option>
+            <option>Software Testing</option>
+          </select>
+        </div>
+        <div>
+          <label for="customer-budget">Budget / range</label>
+          <input id="customer-budget" name="budget" placeholder="Optional">
+        </div>
+        <div>
+          <label for="customer-timeline">Expected timeline</label>
+          <input id="customer-timeline" name="timeline" placeholder="Optional">
+        </div>
+        <div class="full">
+          <label for="customer-requirement">Requirement / question *</label>
+          <textarea id="customer-requirement" name="requirement" required placeholder="Tell our expert what you need help with..."></textarea>
+        </div>
+        <div class="full">
+          <p class="modal-note">Your request will open your email app with the details prepared for Frontline.</p>
+          <div class="form-actions">
+            <button type="button" class="btn-secondary" id="modal-cancel">Cancel</button>
+            <button type="submit" class="btn btn-primary">Request quote / advice →</button>
+          </div>
+        </div>
+      </form>
+    </div>
+  </div>
 
   <script src="script.js"></script>
 </body>
