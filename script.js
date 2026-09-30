@@ -45,3 +45,12 @@ serviceForm?.addEventListener('submit',e=>{
   ].join('\n');
   window.location.href=`mailto:loginfrontline@gmail.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
 });
+
+// Additive visual motion: reveal newly added sections as they enter the viewport.
+const visualItems=document.querySelectorAll('.visual-project-card,.arch-layer,.visual-hero-strip');
+if('IntersectionObserver' in window){
+  const visualObserver=new IntersectionObserver((entries)=>{
+    entries.forEach(entry=>{if(entry.isIntersecting){entry.target.classList.add('is-visible');visualObserver.unobserve(entry.target);}});
+  },{threshold:.12});
+  visualItems.forEach((el,i)=>{el.style.transitionDelay=`${Math.min(i*70,280)}ms`;visualObserver.observe(el);});
+}
