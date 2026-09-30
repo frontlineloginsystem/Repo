@@ -1021,3 +1021,36 @@ section.section.technology-map .architecture-pulse{color:#d9e1e8 !important}
   section.section.technology-map{background:#0e141a !important;color:#fff !important}
   section.section.technology-map{background:#121a22 !important}
 }
+
+
+/* Final requested addition: complete the portfolio grid with a fifth visual card. */
+.portfolio-card.ai-card{
+  position:relative!important;
+  overflow:hidden!important;
+  min-height:280px!important;
+  padding:0!important;
+  background:#0d141b url('assets/ai-automation-visual.jpg') center/cover no-repeat!important;
+  border:0!important;
+}
+.portfolio-card.ai-card::after{
+  content:"";
+  position:absolute;
+  inset:0;
+  background:linear-gradient(135deg,rgba(5,10,15,.78) 0%,rgba(5,10,15,.22) 58%,rgba(5,10,15,.04) 100%);
+  pointer-events:none;
+}
+.portfolio-card.ai-card .portfolio-number{
+  position:absolute!important;
+  top:28px!important;
+  left:28px!important;
+  z-index:2!important;
+  color:#e51e2a!important;
+  font-size:48px!important;
+  line-height:1!important;
+  font-weight:800!important;
+  letter-spacing:-.04em!important;
+}
+@media(max-width:850px){
+  .portfolio-card.ai-card{min-height:250px!important}
+  .portfolio-card.ai-card .portfolio-number{top:24px!important;left:24px!important;font-size:42px!important}
+}
