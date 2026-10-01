@@ -68,3 +68,32 @@ if(!window.matchMedia('(prefers-reduced-motion: reduce)').matches){
     });
   },{passive:true});
 }
+
+// Additive hero interaction: the existing systems map automatically cycles through
+// its four technology nodes; tapping/hovering a node lets the visitor focus it.
+const heroPanel=document.querySelector('.hero-panel');
+const heroNodes=[...document.querySelectorAll('.hero-panel .node')];
+if(heroPanel&&heroNodes.length){
+  let heroIndex=0;
+  let heroTimer=null;
+  const setHeroNode=(index)=>{
+    heroIndex=(index+heroNodes.length)%heroNodes.length;
+    heroNodes.forEach((node,i)=>node.classList.toggle('is-active',i===heroIndex));
+    heroPanel.querySelector('.orbit-core')?.classList.toggle('is-active',true);
+  };
+  const startHeroCycle=()=>{
+    if(window.matchMedia('(prefers-reduced-motion: reduce)').matches)return;
+    clearInterval(heroTimer);
+    heroTimer=setInterval(()=>setHeroNode(heroIndex+1),2800);
+  };
+  heroNodes.forEach((node,index)=>{
+    node.addEventListener('click',()=>{
+      setHeroNode(index);
+      startHeroCycle();
+    });
+    node.addEventListener('mouseenter',()=>setHeroNode(index));
+  });
+  heroPanel.addEventListener('mouseleave',startHeroCycle);
+  setHeroNode(0);
+  startHeroCycle();
+}
