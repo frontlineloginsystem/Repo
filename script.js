@@ -2,10 +2,10 @@ const toggle=document.querySelector('.menu-toggle');
 const nav=document.querySelector('.nav');
 toggle?.addEventListener('click',()=>{const open=nav.classList.toggle('open');toggle.setAttribute('aria-expanded',open);});
 document.querySelectorAll('.nav a').forEach(a=>a.addEventListener('click',()=>nav.classList.remove('open')));
-document.getElementById('year').textContent='2025';
+document.getElementById('year').textContent=new Date().getFullYear();
 
 const linkedinLink=document.getElementById('linkedin-link');
-linkedinLink.href='https://www.linkedin.com/company/frontline-login-system/';
+linkedinLink.href='mailto:info@slsoftware.com?subject=Career%20Enquiry';
 
 // Click any service card to open the enquiry form with that service selected.
 const modal=document.getElementById('service-modal');
@@ -31,7 +31,7 @@ document.addEventListener('keydown',e=>{if(e.key==='Escape'&&modal?.classList.co
 serviceForm?.addEventListener('submit',e=>{
   e.preventDefault();
   const data=new FormData(serviceForm);
-  const subject=`Frontline service enquiry - ${data.get('service')}`;
+  const subject=`SL Software Solutions service enquiry - ${data.get('service')}`;
   const body=[
     `Name: ${data.get('name')}`,
     `Email: ${data.get('email')}`,
@@ -43,7 +43,7 @@ serviceForm?.addEventListener('submit',e=>{
     'Requirement / question:',
     data.get('requirement')
   ].join('\n');
-  window.location.href=`mailto:loginfrontline@gmail.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+  window.location.href=`mailto:info@slsoftware.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
 });
 
 // Additive visual motion: reveal newly added sections as they enter the viewport.

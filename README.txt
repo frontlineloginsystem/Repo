@@ -1,4 +1,4 @@
-FRONTLINE LOGIN SYSTEM PRIVATE LIMITED — WEBSITE V1
+SL SOFTWARE SOLUTIONS PRIVATE LIMITED — WEBSITE V1
 
 Files:
 - index.html
@@ -17,5 +17,5 @@ Important before launch:
 
 Research basis:
 - The legacy public site lists Custom CRM, Cloud Migration, IoT-enabled Asset Tracking, Data Analytics, Cybersecurity, Testing Tools and technologies including Oracle, AWS, SAP, Java and Python.
-- Company records publicly identify the company as incorporated in 2000.
+- Company records publicly identify the company as incorporated in 2022.
 - Some legacy pages contain unrelated/template text (including references to another company), so that material was intentionally not copied into this design.
